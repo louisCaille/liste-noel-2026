@@ -36,6 +36,7 @@ main { position: relative; z-index: 1; }
   position: absolute; width: 80vmax; height: 80vmax; border-radius: 50%;
   background: radial-gradient(circle, rgba(227,50,74,.35), rgba(245,198,107,.12) 40%, transparent 70%);
   filter: blur(40px);
+  will-change: transform, opacity;
   transform: scale(calc(1 + var(--h, 0) * 0.8));
   opacity: calc(1 - var(--h, 0) * 0.6);
 }
@@ -105,6 +106,7 @@ main { position: relative; z-index: 1; }
   position: relative; display: flex; align-items: center; justify-content: center; height: 70vh;
   transform: translateY(calc((1 - var(--in, 0)) * 25vh)) scale(calc(0.7 + var(--in, 0) * 0.3)) rotate(calc((1 - var(--in, 0)) * -12deg));
   opacity: var(--in, 0);
+  will-change: transform, opacity;
 }
 .visual svg { height: 100%; max-width: 100%; overflow: visible; filter: drop-shadow(0 40px 60px rgba(0,0,0,.6)); }
 .text { position: relative; }
@@ -112,6 +114,7 @@ main { position: relative; z-index: 1; }
   --r: clamp(0, calc((var(--in, 0) - var(--d, 0)) / (1 - var(--d, 0))), 1);
   opacity: var(--r);
   transform: translateY(calc((1 - var(--r)) * 50px));
+  will-change: transform, opacity;
 }
 .tag {
   display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
@@ -281,6 +284,9 @@ footer { text-align: center; color: var(--muted); font-size: 14px; padding: 40px
   }
   .item:nth-of-type(even) .visual { order: 0; }
   .visual { height: 34svh; }
+  /* Ombres et flous allégés : coûteux à redessiner pendant le scroll sur téléphone */
+  .visual svg, .mv svg { filter: drop-shadow(0 16px 24px rgba(0,0,0,.5)); }
+  .specs li { backdrop-filter: none; }
   .text { text-align: center; }
   .text h2 { font-size: clamp(32px, 9.5vw, 56px); margin: 10px 0 12px; }
   .text p { margin: 0 auto; font-size: 16px; }

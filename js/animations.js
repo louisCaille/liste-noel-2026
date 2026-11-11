@@ -17,8 +17,10 @@ function onScroll() {
     const p = clamp((vh - r.top) / r.height);
     const inn = reduced ? 1 : ease(clamp((p - 0.12) / 0.38));
     const out = reduced ? 0 : clamp((p - 0.85) / 0.15);
-    s.style.setProperty("--in", inn.toFixed(4));
-    s.style.setProperty("--out", out.toFixed(4));
+    // N'écrit que si la valeur change : chaque écriture relance le calcul de style de la section
+    const vin = inn.toFixed(3), vout = out.toFixed(3);
+    if (s._in !== vin) { s.style.setProperty("--in", vin); s._in = vin; }
+    if (s._out !== vout) { s.style.setProperty("--out", vout); s._out = vout; }
   }
 }
 let ticking = false;
