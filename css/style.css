@@ -167,7 +167,7 @@ main { position: relative; z-index: 1; }
 /* Cartes à collectionner (génériques) */
 .fan { position: relative; container-type: inline-size; width: min(340px, 70vw); aspect-ratio: 63 / 88; perspective: 1200px; }
 .tcard {
-  position: absolute; inset: 0; border-radius: 18px; padding: 10px;
+  position: absolute; inset: 0; border-radius: 6cqw; padding: 3cqw;
   background: linear-gradient(145deg, #ffe27a, #e8a93a);
   box-shadow: 0 30px 60px rgba(0,0,0,.55);
   transform-origin: 50% 110%;
@@ -175,24 +175,29 @@ main { position: relative; z-index: 1; }
 }
 .tcard.front { transform: rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg)); transition: transform .15s ease-out; }
 .tcard .inner {
-  position: relative; height: 100%; border-radius: 10px; overflow: hidden;
+  position: relative; height: 100%; border-radius: 3.5cqw; overflow: hidden;
   background: linear-gradient(180deg, var(--c1), var(--c2));
-  display: flex; flex-direction: column; padding: 10px; gap: 8px; color: #1a1a1a;
+  display: flex; flex-direction: column; padding: 3cqw; gap: 2.5cqw; color: #1a1a1a;
 }
 .tcard .top { display: flex; justify-content: space-between; font-weight: 800; font-size: clamp(8px, 5.5cqw, 15px); white-space: nowrap; gap: 4px; }
 .tcard .art {
-  flex: 0 0 45%; border-radius: 6px; border: 3px solid #d9b34a;
+  flex: 0 0 45%; border-radius: 2cqw; border: max(1.5px, 1cqw) solid #d9b34a;
   background: radial-gradient(circle at 50% 60%, #fff8 0 18%, transparent 19%), radial-gradient(circle at 30% 30%, var(--c3), var(--c4));
   display: grid; place-items: center; font-size: 22cqw;
 }
-.tcard .line { height: 10px; border-radius: 5px; background: rgba(0,0,0,.18); }
+.tcard .line { height: 3cqw; border-radius: 1.5cqw; background: rgba(0,0,0,.18); }
 .tcard .line.s { width: 60%; }
 .tcard .holo {
-  position: absolute; inset: 0; border-radius: 18px; pointer-events: none; mix-blend-mode: color-dodge;
+  position: absolute; inset: 0; border-radius: 6cqw; pointer-events: none; mix-blend-mode: color-dodge;
   background: linear-gradient(115deg, transparent 20%, #ff5ec4 35%, #5ef0ff 45%, #b6ff5e 55%, #ffe65e 65%, transparent 80%);
   background-size: 250% 250%;
   background-position: var(--mx, 50%) var(--my, 50%);
   opacity: .55;
+}
+/* Petites cartes (mobile) : texte illisible, on ne garde que l'illustration */
+@container (max-width: 120px) {
+  .tcard .top, .tcard .line { display: none; }
+  .tcard .art { flex: 1; font-size: 34cqw; }
 }
 
 .rise { transform: translateY(calc((1 - var(--in, 0)) * 40px)); }
@@ -288,7 +293,7 @@ footer { text-align: center; color: var(--muted); font-size: 14px; padding: 40px
   .mini { flex-direction: row; align-items: center; padding: 16px; gap: 14px; border-radius: 24px; }
   .mglow { background: radial-gradient(60% 80% at 15% 50%, var(--accent-soft), transparent 70%); }
   .mv { flex: 0 0 34%; height: 20svh; }
-  .mv .fan { width: calc(11svh * 63 / 88); }
+  .mv .fan { width: calc(13svh * 63 / 88); }
   .mini .tag { font-size: 11px; letter-spacing: .12em; }
   .mini h3 { font-size: 22px; margin: 6px 0; }
   .mini p { font-size: 14px; line-height: 1.4; }
@@ -302,7 +307,7 @@ footer { text-align: center; color: var(--muted); font-size: 14px; padding: 40px
   .fan { width: calc(24svh * 63 / 88); }
   .specs { display: none; }
   .mv { height: 16svh; }
-  .mv .fan { width: calc(9svh * 63 / 88); }
+  .mv .fan { width: calc(11svh * 63 / 88); }
   .mini p { font-size: 13px; }
 }
 
