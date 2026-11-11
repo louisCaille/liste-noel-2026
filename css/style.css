@@ -112,7 +112,6 @@ main { position: relative; z-index: 1; }
   --r: clamp(0, calc((var(--in, 0) - var(--d, 0)) / (1 - var(--d, 0))), 1);
   opacity: var(--r);
   transform: translateY(calc((1 - var(--r)) * 50px));
-  filter: blur(calc((1 - var(--r)) * 8px));
 }
 .tag {
   display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
