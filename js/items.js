@@ -3,7 +3,7 @@
    - un objet seul        → un grand cadeau, un écran entier
    - { divider: "..." }   → un écran de transition
    - { group: [ ... ] }   → petits cadeaux, 2 par écran
-   visual : "watch" | "earbuds" | "kettle" | "cards" | "box" | "pouch"
+   visual : "watch" | "earbuds" | "kettle" | "frother" | "cards" | "box" | "pouch"
             | "bottle" | "battery" | "giftcard" | ou un emoji (ex : "📚")
    ========================================================= */
 const ITEMS = [
@@ -36,6 +36,16 @@ const ITEMS = [
     specs: ["Température réglable", "Bec col de cygne", "Format compact", "Maintien au chaud"],
     link: "https://www.google.com/search?q=bouilloire+col+de+cygne+temp%C3%A9rature+r%C3%A9glable",
     accent: "#ff9b54", accent2: "#ffd36b",
+  },
+  {
+    emoji: "🥛",
+    visual: "frother",
+    tag: "Pour les matcha lattes",
+    title: "Un mousseur <em>de lait</em>",
+    desc: "Pour une <strong>mousse onctueuse</strong>, chaude ou froide, et des lattes comme au café.",
+    specs: ["Mousse chaude & froide", "Facile à nettoyer", "Compact", "Silencieux"],
+    link: "https://www.google.com/search?q=mousseur+de+lait+%C3%A9lectrique",
+    accent: "#e8c8a0", accent2: "#ff9b54",
   },
   { group: [
     {

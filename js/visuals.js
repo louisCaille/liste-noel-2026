@@ -76,6 +76,43 @@ const VISUALS = {
     <text x="215" y="394" text-anchor="middle" fill="var(--accent)" font-size="22" font-weight="800" font-family="Inter, sans-serif">93°C</text>
   </svg>`,
 
+  frother: () => `
+  <svg viewBox="0 0 400 440" aria-hidden="true">
+    <defs>
+      <linearGradient id="fjug" x1="0" x2="1"><stop offset="0" stop-color="#1b1c20"/><stop offset=".35" stop-color="#3d3f46"/><stop offset=".55" stop-color="#22242a"/><stop offset="1" stop-color="#121317"/></linearGradient>
+      <linearGradient id="fbase" x1="0" x2="1"><stop offset="0" stop-color="#0c0d10"/><stop offset=".5" stop-color="#25272d"/><stop offset="1" stop-color="#0c0d10"/></linearGradient>
+      <clipPath id="fwindow"><rect x="176" y="176" width="48" height="172" rx="24"/></clipPath>
+    </defs>
+    <g class="steam" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round">
+      <path d="M180 92 c -12 -14, 12 -24, 0 -40"/>
+      <path d="M200 86 c -12 -14, 12 -24, 0 -40"/>
+      <path d="M220 92 c -12 -14, 12 -24, 0 -40"/>
+    </g>
+    <path d="M266 180 C 330 180, 330 320, 262 320" fill="none" stroke="#1a1b1f" stroke-width="20" stroke-linecap="round"/>
+    <path d="M132 140 L 268 140 L 260 356 Q 259 372 244 372 L 156 372 Q 141 372 140 356 Z" fill="url(#fjug)"/>
+    <path d="M134 146 L 110 140 L 136 172 Z" fill="#2a2c32"/>
+    <rect x="176" y="176" width="48" height="172" rx="24" fill="#0b0c0f"/>
+    <g clip-path="url(#fwindow)">
+      <rect x="176" y="300" width="48" height="60" fill="#f3e6d3"/>
+      <g class="foam">
+        <rect x="176" y="250" width="48" height="56" fill="#fbf4ea"/>
+        ${[[184, 250, 10], [200, 244, 12], [216, 250, 10]].map(([x, y, r]) =>
+          `<circle cx="${x}" cy="${y}" r="${r}" fill="#fbf4ea"/>`).join("")}
+      </g>
+      <g class="bubbles" fill="#fbf4ea">
+        <circle cx="190" cy="232" r="4"/><circle cx="210" cy="226" r="3"/><circle cx="200" cy="220" r="3"/>
+      </g>
+      <g class="whisk" fill="none" stroke="#9aa0aa" stroke-width="3">
+        <ellipse cx="200" cy="336" rx="14" ry="5"/>
+      </g>
+    </g>
+    <rect x="182" y="186" width="5" height="150" rx="2.5" fill="rgba(255,255,255,.08)"/>
+    <rect x="124" y="114" width="152" height="32" rx="12" fill="#2f3137"/>
+    <rect x="182" y="98" width="36" height="20" rx="8" fill="#3d3f46"/>
+    <rect x="100" y="368" width="200" height="44" rx="16" fill="url(#fbase)"/>
+    <circle class="pulse" cx="200" cy="390" r="8" fill="var(--accent2)"/>
+  </svg>`,
+
   cards: () => `
   <div class="fan">
     ${[
