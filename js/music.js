@@ -3,19 +3,23 @@ const audio = new Audio("audio/all-i-want-for-christmas-is-you.mp3");
 audio.loop = true;
 audio.preload = "none";
 const MAX_VOLUME = 0.8;
-let playing = false, fadeTimer;
+let playing = false, fadeTimer, volume = 0;
 
-// Fondu de volume (ignoré sur iOS, où le volume n'est pas modifiable)
+// Fondu de volume. Sur iOS, audio.volume est en lecture seule (toujours 1) :
+// on suit donc notre propre volume et on s'arrête au bout d'un nombre fixe d'étapes.
 function fadeTo(target, ms, done) {
   clearInterval(fadeTimer);
-  const step = (target - audio.volume) / (ms / 50);
+  const steps = Math.max(1, Math.round(ms / 50));
+  const from = volume;
+  let k = 0;
   fadeTimer = setInterval(() => {
-    const v = audio.volume + step;
-    if ((step >= 0 && v >= target) || (step < 0 && v <= target)) {
-      audio.volume = target;
+    k++;
+    volume = from + (target - from) * (k / steps);
+    audio.volume = volume;
+    if (k >= steps) {
       clearInterval(fadeTimer);
       done && done();
-    } else audio.volume = v;
+    }
   }, 50);
 }
 
@@ -23,7 +27,7 @@ const musicBtn = document.getElementById("music");
 function setMusic(on) {
   playing = on;
   if (on) {
-    audio.volume = 0;
+    audio.volume = volume;
     audio.play().catch(() => setMusic(false));
     fadeTo(MAX_VOLUME, 1500);
   } else {
